@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,15 +26,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        global.cpp \
+        httpmgr.cpp \
         logindialog.cpp \
         main.cpp \
         mainwindow.cpp \
         registerdialog.cpp
 
 HEADERS += \
+        global.h \
+        httpmgr.h \
         logindialog.h \
         mainwindow.h \
-        registerdialog.h
+        registerdialog.h \
+        singleton.h
 
 FORMS += \
         logindialog.ui \

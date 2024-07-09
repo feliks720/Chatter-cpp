@@ -41,6 +41,9 @@
               <property name="text">
                <string>错误提示</string>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
              </widget>
             </item>
            </layout>
