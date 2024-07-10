@@ -21,4 +21,8 @@ enum ErrorCodes{
     ERR_NETWORK = 2,
 };
 
+enum Modules{
+    REGISTERMOD = 0,
+};
+
 #endif // GLOBAL_H
