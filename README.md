@@ -14,3 +14,11 @@ A brief structural design is shown in the following diagram.
 First, we will create the client's login interface. We'll start by using Qt to create Qt application widgets. We'll use the QLineEdit widget to create the username and password fields, and the QPushButton widget to create the login button. We'll also use the QMessageBox widget to display error messages.
 
 ## Creating the Login Interface
+
+## Creating the Registration Interface
+
+## Improve registration interface
+
+## Singleton class encapsulation
+
+## HttpMgr class encapsulation
