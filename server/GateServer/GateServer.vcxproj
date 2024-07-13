@@ -144,7 +144,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CServer.cpp" />
     <ClCompile Include="GateServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="const.h" />
+    <ClInclude Include="CServer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
