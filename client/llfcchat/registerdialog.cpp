@@ -14,6 +14,7 @@ RegisterDialog::RegisterDialog(QWidget *parent) :
     ui->err_tip->setProperty("state","normal");
     repolish(ui->err_tip);
     connect(HttpMgr::GetInstance().get(), &HttpMgr::sig_reg_mod_finish, this, &RegisterDialog::slot_reg_mod_finish);
+    initHttpHandlers();
 }
 
 RegisterDialog::~RegisterDialog()

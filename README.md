@@ -17,8 +17,10 @@ First, we will create the client's login interface. We'll start by using Qt to c
 
 ## Creating the Registration Interface
 
-## Improve registration interface
+## Improve Registration Interface
 
-## Singleton class encapsulation
+## Singleton Class Encapsulation
 
-## HttpMgr class encapsulation
+## HttpMgr Class Encapsulation
+
+## Handling Registrtion Message
