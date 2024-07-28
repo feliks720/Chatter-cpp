@@ -3,6 +3,12 @@
 #include <QWidget>
 #include <functional>
 #include "QStyle"
+#include <memory>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QNetworkReply>
+#include <QDir>
+#include <QSettings>
 /**
  * @brief repolish用来根据属性刷新qss
  */
@@ -25,4 +31,5 @@ enum Modules{
     REGISTERMOD = 0,
 };
 
+extern QString gate_url_prefix;
 #endif // GLOBAL_H

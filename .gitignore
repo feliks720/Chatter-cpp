@@ -1,5 +1,5 @@
 build-llfcchat*
 Debug
 x64
-.vscode
+.vs
 llfcchat.pro.user
