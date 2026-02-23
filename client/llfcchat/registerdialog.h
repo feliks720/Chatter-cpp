@@ -20,6 +20,8 @@ public:
 
 private slots:
     void on_get_code_clicked();
+    void on_pushButton_2_clicked();
+    void on_pushButton_clicked();
 public slots:
     void slot_reg_mod_finish(ReqId id, QString res, ErrorCodes err);
 private:
@@ -27,6 +29,8 @@ private:
     Ui::RegisterDialog *ui;
     void showTip(QString str,bool b_ok);
     QMap<ReqId, std::function<void(const QJsonObject&)>> _handlers;
+signals:
+    void sigSwitchLogin();
 };
 
 #endif // REGISTERDIALOG_H

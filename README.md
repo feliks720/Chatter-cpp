@@ -10,17 +10,89 @@ A brief structural design is shown in the following diagram.
 
 3.StatusServer, ServerA, and ServerB can directly access Redis and MySQL services.
 
-## Creating the Application
-First, we will create the client's login interface. We'll start by using Qt to create Qt application widgets. We'll use the QLineEdit widget to create the username and password fields, and the QPushButton widget to create the login button. We'll also use the QMessageBox widget to display error messages.
+## Current Functionality (Implemented)
 
-## Creating the Login Interface
+### GateServer (`server/GateServer`)
 
-## Creating the Registration Interface
+- Async HTTP gateway (Boost.Asio + Beast)
+- Verification code request endpoint: `POST /get_varifycode` (and alias `POST /get_verifycode`)
+- User registration endpoint: `POST /register`
+- User login endpoint: `POST /login`
+- Realtime chat endpoint (WebSocket): `GET /ws` upgrade
+- In-memory user store + verification-code expiry handling (3 minutes)
 
-## Improve Registration Interface
+### VerifyServer (`server/VarifyServer`)
 
-## Singleton Class Encapsulation
+- gRPC service `GetVarifyCode`
+- Sends email verification code (Node.js + nodemailer)
+- Returns `email`, `error`, and `code`
 
-## HttpMgr Class Encapsulation
+### Qt Client (`client/llfcchat`)
 
-## Handling Registrtion Message
+- Register UI:
+  - request verification code
+  - submit registration
+  - input validation and user feedback
+- Login UI:
+  - submit login request
+  - success/failure feedback
+
+### Console Realtime Client (`client/console`)
+
+- C++ WebSocket terminal client for realtime chat testing
+- Supports:
+  - sending chat messages
+  - `/nick your_name` nickname command
+  - `/quit` to exit
+
+## API Overview
+
+### `POST /get_varifycode`
+Request:
+```json
+{
+  "email": "user@example.com"
+}
+```
+
+Response:
+```json
+{
+  "error": 0,
+  "email": "user@example.com",
+  "code": "123456"
+}
+```
+
+### `POST /register`
+Request:
+```json
+{
+  "user": "alice",
+  "email": "user@example.com",
+  "password": "secret123",
+  "code": "123456"
+}
+```
+
+### `POST /login`
+Request:
+```json
+{
+  "user": "alice",
+  "password": "secret123"
+}
+```
+
+### `GET /ws` (WebSocket)
+- Connect to `ws://<gate-host>:<gate-port>/ws`
+- Messages are broadcast to all connected clients
+
+## Console Chat Client Build (Linux)
+
+```bash
+cd client/console
+cmake -S . -B build
+cmake --build build -j
+./build/chat_cli 127.0.0.1 8080 /ws
+```

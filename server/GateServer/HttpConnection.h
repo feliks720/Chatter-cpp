@@ -11,7 +11,7 @@ public:
 private:
 	void CheckDeadline();
 	void WriteResponse();
-	void HandleReq();
+	bool HandleReq();
 	tcp::socket  _socket;
 	// The buffer for performing reads.
 	beast::flat_buffer  _buffer{ 8192 };

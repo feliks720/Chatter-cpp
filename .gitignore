@@ -1,4 +1,6 @@
 build-llfcchat*
+client/console/build
+client/console/build/
 Debug
 x64
 .vs
