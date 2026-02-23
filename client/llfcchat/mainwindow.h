@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStackedWidget>
 #include "logindialog.h"
 #include "registerdialog.h"
 /******************************************************************************
@@ -26,8 +27,10 @@ public:
     ~MainWindow();
 public slots:
     void SlotSwitchReg();
+    void SlotSwitchLogin();
 private:
     Ui::MainWindow *ui;
+    QStackedWidget* _stacked;
     LoginDialog* _login_dlg;
     RegisterDialog* _reg_dlg;
 };

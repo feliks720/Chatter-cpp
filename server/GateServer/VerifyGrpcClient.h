@@ -6,6 +6,7 @@
 #include "message.grpc.pb.h"
 #include "const.h"
 #include "Singleton.h"
+#include "ConfigMgr.h"
 using grpc::Channel;
 using grpc::Status;
 using grpc::ClientContext;
@@ -39,7 +40,16 @@ public:
 
 private:
 	VerifyGrpcClient() {
-		std::shared_ptr<Channel> channel = grpc::CreateChannel("127.0.0.1:50051", grpc::InsecureChannelCredentials());
+		ConfigMgr cfg;
+		std::string host = cfg["VarifyServer"]["Host"];
+		std::string port = cfg["VarifyServer"]["Port"];
+		if (host.empty()) {
+			host = "127.0.0.1";
+		}
+		if (port.empty()) {
+			port = "50051";
+		}
+		std::shared_ptr<Channel> channel = grpc::CreateChannel(host + ":" + port, grpc::InsecureChannelCredentials());
 		stub_ = VarifyService::NewStub(channel);
 	}
 
